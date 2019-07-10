@@ -22,7 +22,7 @@ private:
         int y_finish = finish / graph.get_width();
         int delta_x = x_finish - x_current;
         int delta_y = y_finish - y_current;
-        return sqrt(delta_x * delta_x + delta_y * delta_y);
+        return std::abs(delta_x) + std::abs(delta_y);
     }
 
     class Candidate {
