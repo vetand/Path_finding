@@ -1,4 +1,4 @@
-#include"algo_body.cpp"
+#include"algo_body.h"
 
 using namespace spa2;
 
