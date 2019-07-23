@@ -1,6 +1,6 @@
 #ifndef Algorithm_file
 #define Algorithm_file
-#include"Path.cpp"
+#include"Path.h"
 #include<ctime>
 #include<queue>
 #include<unordered_set>
