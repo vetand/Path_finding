@@ -1,6 +1,6 @@
 #ifndef Obstacle_file
 #define Obstacle_file
-#include"Geometry.cpp"
+#include"Geometry.h"
 #include<fstream>
 #include<tuple>
 #include<vector>
