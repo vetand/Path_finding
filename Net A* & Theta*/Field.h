@@ -1,6 +1,6 @@
 #ifndef Field_file
 #define Field_file
-#include"Obstacle.cpp"
+#include"Obstacle.h"
 #include<set>
 
 namespace spa2 {
