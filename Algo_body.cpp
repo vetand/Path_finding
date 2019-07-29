@@ -98,6 +98,12 @@ namespace spa {
         return USED.size();
     }
 
+    A_star::~A_star() {
+        for (auto element : USED) {
+            delete element.second;
+        }
+    }
+
     void solve_with_A_star(const Map& graph, const std::string& name) {
         A_star solver(graph);
         Path answer = solver.build_path();
