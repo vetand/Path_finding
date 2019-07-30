@@ -6,7 +6,7 @@ namespace spa {
 
     const double eps = 1e-8; // less delta means that potentials are equal
 
-    double A_star::h(int vertex) { // this is R2 metric
+    double A_star::heuristic(int vertex) { // this is R2 metric
         int x_current = vertex % graph.get_width();
         int y_current = vertex / graph.get_width();
         int x_finish = finish % graph.get_width();
@@ -20,12 +20,12 @@ namespace spa {
                             owner(input_owner),
                             id(y * input_owner->graph.get_width() + x),
                             g_value(dist) {
-        f_value = owner->h(id) + dist;
+        f_value = owner->heuristic(id) + dist;
     }
 
     bool A_star::SearchNode::SearchNode::operator < (const SearchNode& other) const {
         if (std::abs(f_value - other.f_value) < eps) {
-            if (owner->h(id) - eps < owner->h(other.id)) {
+            if (owner->heuristic(id) - eps < owner->heuristic(other.id)) {
                 return true;
             } else {
                 return false;
@@ -104,13 +104,13 @@ namespace spa {
         }
     }
 
-    void solve_with_A_star(const Map& graph, const std::string& name) {
+    void A_star::solve(const std::string& name) {
         A_star solver(graph);
         Path answer = solver.build_path();
         std::ofstream out(name);
         out << "algorithm reviewed " << solver.marked()
             << " free points from " << graph.available() << " available\n";
-        print_with_path(graph, answer, out);
+        graph.print_with_path(answer, out);
         out.close();
     }
 

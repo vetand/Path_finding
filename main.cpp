@@ -7,6 +7,7 @@ using namespace std;
 int main(int argc, char* argv[]) {
     spa::Map f;
     f.get_field(argv[1]);
-    spa::solve_with_A_star(f);
+    spa::A_star solver(f);
+    solver.solve();
     return 0;
 }

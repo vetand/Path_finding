@@ -12,6 +12,8 @@
 
 namespace spa {
 
+    class Path;
+
     class Map {
     private:
         int height;
@@ -36,6 +38,10 @@ namespace spa {
         int available() const;
 
         void get_field(const std::string& name = "input.txt");
+
+        void print_field(const std::string& name = "output.txt") const;
+
+        void print_with_path(const Path& path, std::ostream& out) const;
 
     };
 
@@ -68,7 +74,7 @@ namespace spa {
     class A_star {
     private:
 
-        double h(int vertex);
+        double heuristic(int vertex);
 
         class SearchNode {
         public:
@@ -106,11 +112,11 @@ namespace spa {
 
         int marked() const;
 
+        void solve(const std::string& name = "output.txt");
+
         ~A_star();
 
     };
-
-    void solve_with_A_star(const Map& graph, const std::string& name = "output.txt");
 
 };
 

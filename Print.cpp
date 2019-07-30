@@ -6,11 +6,11 @@
 
 namespace spa {
 
-void print_field(const Map& graph, const std::string& name = "output.txt") {
+void Map::print_field(const std::string& name) const {
     std::ofstream out(name);
-    for (int y = 0; y < graph.get_height(); ++y) {
-        for (int x = 0; x < graph.get_width(); ++x) {
-            if (graph.is_free(x, y)) {
+    for (int y = 0; y < get_height(); ++y) {
+        for (int x = 0; x < get_width(); ++x) {
+            if (is_free(x, y)) {
                 out << ".";
             } else {
                 out << "#";
@@ -21,12 +21,12 @@ void print_field(const Map& graph, const std::string& name = "output.txt") {
     out << std::endl;
 }
 
-void print_with_path(const Map& graph, const Path& path, std::ostream& out) {
+void Map::print_with_path(const Path& path, std::ostream& out) const {
     out << "total path length = " << path.get_len() << "\n";
     out << "total time used = " << (double)clock() / 1000 << " seconds\n";
-    for (int y = 0; y < graph.get_height(); ++y) {
-        for (int x = 0; x < graph.get_width(); ++x) {
-            if (graph.is_free(x, y)) {
+    for (int y = 0; y < get_height(); ++y) {
+        for (int x = 0; x < get_width(); ++x) {
+            if (is_free(x, y)) {
                 if (path.in_path(x, y)) {
                     out << "*";
                 } else {
